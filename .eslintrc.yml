@@ -3,8 +3,8 @@ env:
   node: true
 
 extends:
-  - 'eslint:recommended'
   - 'airbnb-base'
+  - 'eslint:recommended'
 
 globals:
   Atomics: readonly
