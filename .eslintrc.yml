@@ -4,7 +4,7 @@ env:
 
 extends:
   - 'eslint:recommended'
-  - 'airbnb-base'
+  - 'eslint-config-airbnb-base'
 
 globals:
   Atomics: readonly
