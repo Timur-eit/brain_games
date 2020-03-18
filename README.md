@@ -21,7 +21,7 @@ Mini-game for CLI
 - [NPM](https://www.npmjs.com/) 
 - [Semantic Versioning 2.0.0](https://semver.org/)
 
-### Installation
+### Installation:
 `git clone <this repo>`
 
 `npm link`
