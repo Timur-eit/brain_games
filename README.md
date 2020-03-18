@@ -16,11 +16,15 @@ Mini-game for CLI
 - CLI (POSIX)
 - Node.js v13.11.0
 
-
 ### Links:
 - [Hexlet](https://ru.hexlet.io)
 - [NPM](https://www.npmjs.com/) 
 - [Semantic Versioning 2.0.0](https://semver.org/)
+
+###Installation
+`git clone <this repo>`
+`npm link`
+[see asciinema](https://asciinema.org/a/311511)
 
 
 ### Comments:
