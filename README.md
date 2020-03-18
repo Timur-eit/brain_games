@@ -35,5 +35,6 @@ Mini-games for CLI
 [see asciinema](https://asciinema.org/a/311511)
 
 
-#### Comments:
+
+### Comments:
 Project started 13 March 2020 and still is under development
