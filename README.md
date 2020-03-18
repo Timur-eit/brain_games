@@ -25,10 +25,12 @@ Mini-games for CLI
 ## Games:
 
 ### Brain-even: Answer "yes" if the number is even, otherwise answer "no".
-#### Installation:
-`git clone <this repo>`
+#### Installation and start:
+`$ git clone <this repo>`
 
-`npm link`
+`$ npm link`
+
+`$ brain-even`
 
 [see asciinema](https://asciinema.org/a/311511)
 
