@@ -56,6 +56,6 @@ export const brainEven = () => {
       break;
     }
 
-    console.log(`Congratulations, ${userName}`);
+    console.log(`Congratulations, ${userName}!`);
   }
 };
