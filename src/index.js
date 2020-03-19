@@ -20,7 +20,7 @@ const getRandomNumber = () => {
   return random(maxNumber);
 };
 
-const arrayOfRandom = [getRandomNumber(), getRandomNumber(), getRandomNumber()];
+const arrayOfRandomNumbers = [getRandomNumber(), getRandomNumber(), getRandomNumber()];
 
 const isEven = (number) => {
   if (number % 2 === 0) {
@@ -36,7 +36,7 @@ export const brainEven = () => {
   console.log(ruleForBrainEven);
   // need to use for...of in this function
   // eslint-disable-next-line no-restricted-syntax
-  for (const item of arrayOfRandom) {
+  for (const item of arrayOfRandomNumbers) {
     const answer = readlineSync.question(`Question: ${item}\nYour answer: `);
     const validAnswers = ['no', 'yes'];
     const zero = validAnswers[0];
