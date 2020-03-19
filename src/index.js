@@ -37,7 +37,7 @@ export const brainEven = () => {
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
   console.log(ruleForBrainEven);
-  // need to use "for...of" in this function instead of "Array.prototype.forEach()"
+  // need to use "for...of" in this function instead of "Array.prototype.forEach()" due to "break"
   // eslint-disable-next-line no-restricted-syntax
   for (const item of collOfRandomNumbers) {
     const answer = readlineSync.question(`Question: ${item}\nYour answer: `);
