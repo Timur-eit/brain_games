@@ -20,7 +20,10 @@ const getRandomNumber = () => {
   return random(maxNumber);
 };
 
-const arrayOfRandomNumbers = [getRandomNumber(), getRandomNumber(), getRandomNumber()];
+const collOfRandomNumbers = [getRandomNumber(), getRandomNumber(), getRandomNumber()];
+/*
+3 items of array => 3 questions to user
+*/
 
 const isEven = (number) => {
   if (number % 2 === 0) {
@@ -34,9 +37,9 @@ export const brainEven = () => {
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
   console.log(ruleForBrainEven);
-  // need to use for...of in this function
+  // need to use "for...of" in this function instead of "Array.prototype.forEach()"
   // eslint-disable-next-line no-restricted-syntax
-  for (const item of arrayOfRandomNumbers) {
+  for (const item of collOfRandomNumbers) {
     const answer = readlineSync.question(`Question: ${item}\nYour answer: `);
     const validAnswers = ['no', 'yes'];
     const zero = validAnswers[0];
