@@ -21,9 +21,7 @@ const getRandomNumber = () => {
 };
 
 const collOfRandomNumbers = [getRandomNumber(), getRandomNumber(), getRandomNumber()];
-/*
-3 items of array => 3 questions to user
-*/
+// 3 items of array => 3 questions to user
 
 const isEven = (number) => {
   if (number % 2 === 0) {
@@ -35,8 +33,9 @@ const isEven = (number) => {
 
 export const brainEven = () => {
   const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);
-  console.log(ruleForBrainEven);
+  console.log(`Hello, ${userName}!\n${ruleForBrainEven}`);
+
+  let result;
   // need to use "for...of" in this function instead of "Array.prototype.forEach()" due to "break"
   // eslint-disable-next-line no-restricted-syntax
   for (const item of collOfRandomNumbers) {
@@ -54,11 +53,14 @@ export const brainEven = () => {
 
     if (answer === trueAnswer) {
       console.log('Correct!');
+      result = true;
     } else if (answer !== trueAnswer) {
       console.log(`"${answer}" is wrong answer ;(. Correct answer was "${trueAnswer}".\nLet's try again, ${userName}!`);
+      result = false;
       break;
     }
-
+  }
+  if (result === true) {
     console.log(`Congratulations, ${userName}!`);
   }
 };
