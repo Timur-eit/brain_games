@@ -17,7 +17,11 @@ const getRandomNumber = (min, max) => {
 */
 
 const ruleForBrainEven = 'Answer "yes" if the number is even, otherwise answer "no"';
-const collOfRandomNumbers = [getRandomNumber(1, 100), getRandomNumber(1, 100), getRandomNumber(1, 100)];
+const collOfRandomNumbers = [
+  getRandomNumber(1, 100),
+  getRandomNumber(1, 100),
+  getRandomNumber(1, 100),
+];
 // 3 items of array => 3 questions to user
 
 const isEven = (number) => {
@@ -33,7 +37,7 @@ export const brainEven = () => {
   console.log(ruleForBrainEven);
 
   let result;
-  // need to use "for...of" in this function instead of "Array.prototype.forEach()" due to "break"
+  // due to "break" need to use "for...of" in this function instead of "Array.prototype.forEach()"
   // eslint-disable-next-line no-restricted-syntax
   for (const item of collOfRandomNumbers) {
     const answer = readlineSync.question(`Question: ${item}\nYour answer: `);
@@ -71,16 +75,18 @@ const collOfOperators = ['+', '-', '*'];
 const getRandomItemOfArray = () => getRandomNumber(0, 3);
 // random index of coll
 
-const getRandomOperator = () => {
-  return collOfOperators[getRandomItemOfArray()];
-};
+const getRandomOperator = () => collOfOperators[getRandomItemOfArray()];
 
 const getRandomOfExpression = () => { // example return: 4 + 2
   const stringOfExpression = `${getRandomNumber(1, 10)} ${getRandomOperator()} ${getRandomNumber(1, 10)}`;
-  return stringOfExpression
+  return stringOfExpression;
 };
 
-const collOfRandomExpressions = [getRandomOfExpression(), getRandomOfExpression(), getRandomOfExpression()];
+const collOfRandomExpressions = [
+  getRandomOfExpression(),
+  getRandomOfExpression(),
+  getRandomOfExpression(),
+];
 // 3 items of array => 3 questions to user
 
 const isCorrect = (answer, expression) => {
@@ -105,7 +111,7 @@ export const brainCalc = () => {
 
     let trueAnswer;
 
-    if (isCorrect(answer, expression)) { 
+    if (isCorrect(answer, expression)) {
       trueAnswer = answer;
     } else {
       trueAnswer = expression;
