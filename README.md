@@ -22,7 +22,8 @@ Mini-games for CLI
 - [Semantic Versioning 2.0.0](https://semver.org/)
 
 
-## Games:
+
+## Games
 
 #### Installation and start:
 1. `$ git clone <this repo url>`
