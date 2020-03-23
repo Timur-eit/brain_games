@@ -33,13 +33,13 @@ Mini-games for CLI
 
 4. `$ brain-<GAME>`
 
-[see asciinema](https://asciinema.org/a/311511)
+[see asciinema](https://asciinema.org/a/312673)
 
 ### Brain-even: Answer "yes" if the number is even, otherwise answer "no".
 
 `$ brain-even`
 
-[see asciinema](https://asciinema.org/a/311511)
+[see asciinema](https://asciinema.org/a/312673)
 
 ### Brain-calc: What is the result of expression?
 
