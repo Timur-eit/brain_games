@@ -35,8 +35,6 @@ Mini-games for CLI
 4. `$ brain-<GAME>`
 
 [see asciinema](https://asciinema.org/a/312673)
-[![asciicast](https://asciinema.org/a/312673.svg)](https://asciinema.org/a/312673)
-<script id="asciicast-312673" src="https://asciinema.org/a/312673.js" async></script>
 
 ### Brain-even: Answer "yes" if the number is even, otherwise answer "no".
 
@@ -50,6 +48,12 @@ Mini-games for CLI
 
 [see asciinema](https://asciinema.org/a/312667)
 
+
+### Brain-gcd: Find the greatest common divisor of given numbers.
+
+`$ brain-gcd`
+
+[see asciinema](https://asciinema.org/a/313187)
 
 
 ### Comments:
