@@ -1,9 +1,7 @@
 import readlineSync from 'readline-sync';
 
 const nameRequst = (question) => readlineSync.question(question);
-const greeting = () => console.log(`Hello, ${nameRequst('May I have your name? ')}!`);
-
-export default greeting;
+export const greeting = () => console.log(`Hello, ${nameRequst('May I have your name? ')}!`);
 
 export const getRandomNumber = (min, max) => {
   const minNumber = min;
