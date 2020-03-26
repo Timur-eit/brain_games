@@ -69,4 +69,5 @@ Mini-games for CLI
 
 
 ### Comments:
-Project started 13 March 2020 and still is under development
+Project started 13 March 2020 and still is under development.
+UPD: 27 March 2020 Alpha-version of the project was finished.
