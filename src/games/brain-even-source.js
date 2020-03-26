@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { getRandomNumber } from '../index.js';
+import { getRandomNumber, isEven } from '../index.js';
 
 const ruleForBrainEven = 'Answer "yes" if the number is even, otherwise answer "no"';
 
@@ -7,15 +7,7 @@ const collOfRandomNumbers = [
   getRandomNumber(1, 100),
   getRandomNumber(1, 100),
   getRandomNumber(1, 100),
-];
-// 3 items of array => 3 questions to user
-
-const isEven = (number) => {
-  if (number % 2 === 0) {
-    return true;
-  }
-  return false;
-};
+]; // 3 items of array => 3 questions to user
 
 const brainEven = () => {
   const username = readlineSync.question('May I have your name? ');
