@@ -8,7 +8,7 @@ const getRandomItemOfArray = () => getRandomNumber(1, 10);
 const getArithmeticProgression = (startNumber, step) => {
   const maxLength = 10;
   let counter = startNumber;
-  let result = [];
+  const result = [];
 
   for (let i = 0; i < maxLength; i += 1) {
     result.push(counter);
@@ -37,7 +37,7 @@ const collOfRandomNumberSequences = [
   (getArithmeticProgression(getRandomNumber(1, 30), getRandomNumber(1, 5))),
 ];
 
-export const brainProgres = () => {
+const brainProgres = () => {
   const username = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${username}!`);
   console.log(ruleForBrainProgress);
