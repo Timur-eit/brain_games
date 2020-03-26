@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { getRandomNumber } from '../index.js';
+import { getRandomNumber, isPrime } from '../index.js';
 
 const ruleForBrainPrime = 'Answer "yes" if given number is prime, otherwise answer "no".';
 
@@ -8,18 +8,6 @@ const collOfRandomNumbers = [
   getRandomNumber(1, 100),
   getRandomNumber(1, 100),
 ]; // 3 items of array => 3 questions to user
-
-const isPrime = (num) => {
-  if (num < 2) {
-    return false;
-  }
-  for (let i = 2; i <= num / 2; i += 1) {
-    if (num % i === 0) {
-      return false;
-    }
-  }
-  return true;
-};
 
 const brainPrime = () => {
   const username = readlineSync.question('May I have your name? ');
