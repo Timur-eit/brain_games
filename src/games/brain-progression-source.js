@@ -56,7 +56,7 @@ const brainProgres = () => {
     if (isCorrect(answer, item[indexOfcollOfArithmeticProgression])) {
       trueAnswer = answer;
     } else {
-      trueAnswer = indexOfcollOfArithmeticProgression;
+      trueAnswer = item[indexOfcollOfArithmeticProgression];
     }
 
     if (answer === trueAnswer) {
