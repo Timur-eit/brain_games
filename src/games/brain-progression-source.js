@@ -47,8 +47,8 @@ const brainProgres = () => {
   for (const item of collOfRandomNumberSequences) {
     // eslint-disable-next-line no-eval
     const indexOfcollOfArithmeticProgression = getRandomItemOfArray();
-    const getHidenNumber = toHideNumber(item, indexOfcollOfArithmeticProgression);
-    const outputForUser = getHidenNumber.join(' ');
+    const getHiddenNumber = toHideNumber(item, indexOfcollOfArithmeticProgression);
+    const outputForUser = getHiddenNumber.join(' ');
     const answer = parseInt((readlineSync.question(`Question: ${outputForUser}\nYour answer: `)), 10);
 
     let trueAnswer;
