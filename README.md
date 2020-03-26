@@ -61,5 +61,12 @@ Mini-games for CLI
 
 [see asciinema](https://asciinema.org/a/313691)
 
+### Brain-prime: Answer "yes" if given number is prime, otherwise answer "no".
+
+`$ brain-prime`
+
+[see asciinema](https://asciinema.org/a/313835)
+
+
 ### Comments:
 Project started 13 March 2020 and still is under development
