@@ -16,8 +16,7 @@ const collOfRandomExpressions = [
   getRandomOfExpression(),
   getRandomOfExpression(),
   getRandomOfExpression(),
-];
-// 3 items of array => 3 questions to user
+]; // 3 items of array => 3 questions to user
 
 const brainCalc = () => {
   const username = readlineSync.question('May I have your name? ');
