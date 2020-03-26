@@ -2,5 +2,5 @@
 
 import brainEven from '../src/games/brain-even-source.js';
 
-console.log('Welcome to the Brain Games!\n');
+console.log('Welcome to the Brain Games!');
 brainEven();
