@@ -23,7 +23,7 @@ const toHideNumber = (coll, index) => {
   // eslint-disable-next-line no-restricted-syntax
   for (let item of coll) {
     if (item === coll[index]) {
-      const marker = '...';
+      const marker = '..';
       item = marker;
     }
     result.push(item);
