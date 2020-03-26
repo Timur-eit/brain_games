@@ -55,6 +55,11 @@ Mini-games for CLI
 
 [see asciinema](https://asciinema.org/a/313187)
 
+### Brain-progression: What number is missing in the progression?
+
+`$ brain-progression`
+
+[see asciinema](https://asciinema.org/a/313691)
 
 ### Comments:
 Project started 13 March 2020 and still is under development
