@@ -34,38 +34,38 @@ Mini-games for CLI
 
 4. `$ brain-<GAME>`
 
-[see asciinema](https://asciinema.org/a/312673)
+[see asciinema](https://asciinema.org/a/313937)
 
 ### Brain-even: Answer "yes" if the number is even, otherwise answer "no".
 
 `$ brain-even`
 
-[see asciinema](https://asciinema.org/a/312673)
+[see asciinema](https://asciinema.org/a/313937)
 
 ### Brain-calc: What is the result of expression?
 
 `$ brain-calc`
 
-[see asciinema](https://asciinema.org/a/312667)
+[see asciinema](https://asciinema.org/a/313935)
 
 
 ### Brain-gcd: Find the greatest common divisor of given numbers.
 
 `$ brain-gcd`
 
-[see asciinema](https://asciinema.org/a/313187)
+[see asciinema](https://asciinema.org/a/313939)
 
 ### Brain-progression: What number is missing in the progression?
 
 `$ brain-progression`
 
-[see asciinema](https://asciinema.org/a/313691)
+[see asciinema](https://asciinema.org/a/313942)
 
 ### Brain-prime: Answer "yes" if given number is prime, otherwise answer "no".
 
 `$ brain-prime`
 
-[see asciinema](https://asciinema.org/a/313835)
+[see asciinema](https://asciinema.org/a/313940)
 
 
 ### Comments:
