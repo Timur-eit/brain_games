@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import brainEven from '../src/games/brain-even-source.js';
+import { brainEven, ruleForBrainEven, collOfRandomNumbers } from '../src/games/brain-even-source.js';
 
-console.log('Welcome to the Brain Games!');
-brainEven();
+brainEven(ruleForBrainEven, collOfRandomNumbers);

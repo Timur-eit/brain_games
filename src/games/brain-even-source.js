@@ -1,33 +1,35 @@
-import readlineSync from 'readline-sync';
-import { getRandomNumber, isEven } from '../index.js';
+import * as brainGames from '../index.js';
 
-const ruleForBrainEven = 'Answer "yes" if the number is even, otherwise answer "no"';
+export const ruleForBrainEven = 'Answer "yes" if the number is even, otherwise answer "no"';
 
-const collOfRandomNumbers = [
-  getRandomNumber(1, 100),
-  getRandomNumber(1, 100),
-  getRandomNumber(1, 100),
-]; // 3 items of array => 3 questions to user
+const isEven = (number) => {
+  if (number % 2 === 0) {
+    return true;
+  }
+  return false;
+};
 
-const brainEven = () => {
-  const username = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${username}!`);
-  console.log(ruleForBrainEven);
+export const collOfRandomNumbers = [
+  brainGames.getRandomNumber(1, 100),
+  brainGames.getRandomNumber(1, 100),
+  brainGames.getRandomNumber(1, 100),
+];
+
+export const brainEven = (gameRules, collOfExpressions, answer1 = 'yes', answer2 = 'no') => {
+  const username = brainGames.usernameRequest;
+  console.log(`${username}\n${gameRules}`);
 
   let result;
-  // due to "break" need to use "for...of" in this function instead of "Array.prototype.forEach()"
-  // eslint-disable-next-line no-restricted-syntax
-  for (const item of collOfRandomNumbers) {
-    const answer = readlineSync.question(`Question: ${item}\nYour answer: `);
+  for (let i = 0; i < collOfExpressions.length; i += 1) {
+    const item = collOfExpressions[i];
+    const answer = brainGames.askAQuestion(item);
 
     let trueAnswer;
-
     if (isEven(item)) {
-      trueAnswer = 'yes';
-    } else if (!isEven(item)) {
-      trueAnswer = 'no';
+      trueAnswer = answer1;
+    } else {
+      trueAnswer = answer2;
     }
-
     if (answer === trueAnswer) {
       console.log('Correct!');
       result = true;
@@ -41,5 +43,3 @@ const brainEven = () => {
     console.log(`Congratulations, ${username}!`);
   }
 };
-
-export default brainEven;
