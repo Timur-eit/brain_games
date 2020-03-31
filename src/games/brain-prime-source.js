@@ -1,14 +1,17 @@
-import readlineSync from 'readline-sync';
-import { getRandomNumber, isPrime } from '../index.js';
+// import readlineSync from 'readline-sync';
+// import { getRandomNumber } from '../index.js';
 
-const ruleForBrainPrime = 'Answer "yes" if given number is prime, otherwise answer "no".';
+// const ruleForBrainPrime = 'Answer "yes" if given number is prime, otherwise answer "no".';
 
+/**
 const collOfRandomNumbers = [
   getRandomNumber(1, 100),
   getRandomNumber(1, 100),
   getRandomNumber(1, 100),
-]; // 3 items of array => 3 questions to user
+];
+*/
 
+/**
 const brainPrime = () => {
   const username = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${username}!`);
@@ -32,7 +35,9 @@ const brainPrime = () => {
       console.log('Correct!');
       result = true;
     } else if (answer !== trueAnswer) {
-      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${trueAnswer}".\nLet's try again, ${username}!`);
+      console.log(
+`"${answer}" is wrong answer ;(. Correct answer was "${trueAnswer}".\nLet's try again, ${username}!`
+        );
       result = false;
       break;
     }
@@ -43,3 +48,4 @@ const brainPrime = () => {
 };
 
 export default brainPrime;
+*/
