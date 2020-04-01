@@ -1,9 +1,7 @@
 import readlineSync from 'readline-sync';
 
-// export const greetingQuestion = 'Welcome to the Brain Games!\nMay I have your name? ';
-// export const usernameRequest = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
-// export const greeting = () => console.log(`Hello, ${usernameRequest}!`);
-// export const askAQuestion = (expression) => readlineSync.question(`Question: ${expression}\nYour answer: `);
+export const usernameRequest = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
+export const greeting = () => console.log(`Hello, ${usernameRequest}!`);
 
 export const getRandomNumber = (min, max) => {
   const minNumber = min;
@@ -12,43 +10,34 @@ export const getRandomNumber = (min, max) => {
   return random(maxNumber);
 };
 
-export const collOfExpressions = [
-  getRandomNumber(1, 100),
-  getRandomNumber(1, 100),
-  getRandomNumber(1, 100),
-];
+export const brainGames = (gameRules, collOfExpressions, condition, answer1 = 'yes', answer2 = 'no') => {
+  const username = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
+  console.log(`Hello, ${username}\n${gameRules}`);
 
-export const roundCounter = (condition) => {
   for (let i = 0; i < collOfExpressions.length; i += 1) {
+
     const item = collOfExpressions[i];
     const answer = readlineSync.question(`Question: ${item}\nYour answer: `);
 
     let trueAnswer;
     let result;
 
-    if (condition) {
-      trueAnswer = 'yes';
+    if (condition(item)) {
+      trueAnswer = answer1;
     } else {
-      trueAnswer = 'no';
+      trueAnswer = answer2;
     }
+
     if (answer === trueAnswer) {
       console.log('Correct!');
       result = true;
     } else if (answer !== trueAnswer) {
-      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${trueAnswer}".\nLet's try again, ${'*****USER NAME*****'}!`);
+      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${trueAnswer}".\nLet's try again, ${username}!`);
       result = false;
       break;
     }
     if (result === true) {
-      console.log(`Congratulations, ${'*****USER NAME*****'}!`);
+      console.log(`Congratulations, ${'username'}!`);
     }
   }
 };
-
-/**
-
-const brainGames = (gameRules, collOfExpressions, condition, answer1 = 'yes', answer2 = 'no') => {
-  const username = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
-  console.log(`Hello, ${username}\n${gameRules}`);
-};
-*/
