@@ -18,6 +18,13 @@ const collOfRandomExpressions = [
   getRandomOfExpression(),
 ]; // 3 items of array => 3 questions to user
 
+export const isCorrect = (answer, expression) => {
+  if (answer === expression) {
+    return true;
+  }
+  return false;
+};
+
 const brainCalc = () => {
   const username = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${username}!`);

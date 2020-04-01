@@ -1,9 +1,9 @@
 import readlineSync from 'readline-sync';
 
-export const greetingQuestion = 'Welcome to the Brain Games!\nMay I have your name? ';
-export const usernameRequest = readlineSync.question(greetingQuestion);
-export const greeting = () => console.log(`Hello, ${usernameRequest}!`);
-export const askAQuestion = (expression) => readlineSync.question(`Question: ${expression}\nYour answer: `);
+// export const greetingQuestion = 'Welcome to the Brain Games!\nMay I have your name? ';
+// export const usernameRequest = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
+// export const greeting = () => console.log(`Hello, ${usernameRequest}!`);
+// export const askAQuestion = (expression) => readlineSync.question(`Question: ${expression}\nYour answer: `);
 
 export const getRandomNumber = (min, max) => {
   const minNumber = min;
@@ -12,39 +12,43 @@ export const getRandomNumber = (min, max) => {
   return random(maxNumber);
 };
 
-export const isCorrect = (answer, expression) => {
-  if (answer === expression) {
-    return true;
-  }
-  return false;
-};
+export const collOfExpressions = [
+  getRandomNumber(1, 100),
+  getRandomNumber(1, 100),
+  getRandomNumber(1, 100),
+];
 
-export const brainGames = (gameRules, collOfExpressions, condition = 'someFunction', answer1 = 'yes', answer2 = 'no') => {
-  // condition: for example function wich return number is even or not
-  const username = usernameRequest;
-  console.log(`${username}\n${gameRules}`);
-
-  let result;
+export const roundCounter = (condition) => {
   for (let i = 0; i < collOfExpressions.length; i += 1) {
     const item = collOfExpressions[i];
-    const answer = askAQuestion(item);
+    const answer = readlineSync.question(`Question: ${item}\nYour answer: `);
 
     let trueAnswer;
+    let result;
+
     if (condition) {
-      trueAnswer = answer1;
+      trueAnswer = 'yes';
     } else {
-      trueAnswer = answer2;
+      trueAnswer = 'no';
     }
     if (answer === trueAnswer) {
       console.log('Correct!');
       result = true;
     } else if (answer !== trueAnswer) {
-      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${trueAnswer}".\nLet's try again, ${username}!`);
+      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${trueAnswer}".\nLet's try again, ${'*****USER NAME*****'}!`);
       result = false;
       break;
     }
-  }
-  if (result === true) {
-    console.log(`Congratulations, ${username}!`);
+    if (result === true) {
+      console.log(`Congratulations, ${'*****USER NAME*****'}!`);
+    }
   }
 };
+
+/**
+
+const brainGames = (gameRules, collOfExpressions, condition, answer1 = 'yes', answer2 = 'no') => {
+  const username = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
+  console.log(`Hello, ${username}\n${gameRules}`);
+};
+*/

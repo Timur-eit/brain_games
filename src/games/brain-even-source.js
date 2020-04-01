@@ -9,12 +9,22 @@ const isEven = (number) => {
   return false;
 };
 
+const conditionForEvenNumber = isEven(???);
+
+export const brainEven = () => brainGames.roundCounter(conditionForEvenNumber);
+
+brainEven();
+
+
+/**
 export const collOfRandomNumbers = [
   brainGames.getRandomNumber(1, 100),
   brainGames.getRandomNumber(1, 100),
   brainGames.getRandomNumber(1, 100),
 ];
+ */
 
+/**
 export const brainEven = (gameRules, collOfExpressions, answer1 = 'yes', answer2 = 'no') => {
   const username = brainGames.usernameRequest;
   console.log(`${username}\n${gameRules}`);
@@ -43,3 +53,4 @@ export const brainEven = (gameRules, collOfExpressions, answer1 = 'yes', answer2
     console.log(`Congratulations, ${username}!`);
   }
 };
+ */
