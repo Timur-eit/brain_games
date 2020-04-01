@@ -9,7 +9,7 @@ const isEven = (number) => {
   return false;
 };
 
-const conditionForEvenNumber = isEven(???);
+const conditionForEvenNumber = isEven();
 
 export const brainEven = () => brainGames.roundCounter(conditionForEvenNumber);
 
