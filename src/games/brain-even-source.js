@@ -1,4 +1,4 @@
-import { getRandomNumber, brainGames } from '../index.js';
+import { getRandomNumber, brainGamesSimple } from '../index.js';
 
 export const ruleForBrainEven = 'Answer "yes" if the number is even, otherwise answer "no"';
 
@@ -15,4 +15,4 @@ const collOfExpressions = [
   getRandomNumber(1, 100),
 ];
 
-export const brainEven = () => brainGames(ruleForBrainEven, collOfExpressions, isEven);
+export const brainEven = () => brainGamesSimple(ruleForBrainEven, collOfExpressions, isEven);
