@@ -31,10 +31,10 @@ export const brainGames = (gameRules, collOfpointsOfQuestion, correctAnswer, ans
 
     const answerForChecking = correctAnswer(formatedAnswer, itemOfPointsOfQuestion);
 
-    if (answer === answerForChecking) {
+    if (formatedAnswer === answerForChecking) {
       console.log('Correct!');
       correctAnswerIndicator = true;
-    } else if (answer !== answerForChecking) {
+    } else if (formatedAnswer !== answerForChecking) {
       console.log(`"${answer}" is wrong answer ;(. Correct answer was "${answerForChecking}".\nLet's try again, ${username}!`);
       correctAnswerIndicator = false;
       break;
