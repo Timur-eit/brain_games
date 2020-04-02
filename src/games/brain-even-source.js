@@ -44,6 +44,13 @@ const correctAnswerForBrainEven = (answer, num) => {
 };
 
 
-export const brainEven = () => brainGames(ruleForBrainEven, collOfPointsOfQuestion, correctAnswerForBrainEven, 'string');
+export const brainEven = () => {
+  brainGames(
+    ruleForBrainEven,
+    collOfPointsOfQuestion,
+    correctAnswerForBrainEven,
+    'string',
+  );
+};
 
 export default brainEven;
