@@ -10,34 +10,36 @@ export const getRandomNumber = (min, max) => {
   return random(maxNumber);
 };
 
-export const brainGames = (gameRules, collOfExpressions, condition, answer1 = 'yes', answer2 = 'no') => {
-  const username = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
-  console.log(`Hello, ${username}\n${gameRules}`);
+export const brainGames = (gameRules, pointOfQuestion, correctAnswer, answerFormat = 'number') => {
+  // answerFormat may be 'string' or 'number'
+  const username = usernameRequest;
+  greeting();
+  console.log(gameRules);
 
-  for (let i = 0; i < collOfExpressions.length; i += 1) {
+  let correctAnswerIndicator;
+  for (let round = 0; round < 3; round += 1) {
+    const answer = readlineSync.question(`Question: ${pointOfQuestion}\nYour answer: `);
 
-    const item = collOfExpressions[i];
-    const answer = readlineSync.question(`Question: ${item}\nYour answer: `);
+    let formatedAnswer;
 
-    let trueAnswer;
-    let result;
-
-    if (condition(item)) {
-      trueAnswer = answer1;
-    } else {
-      trueAnswer = answer2;
+    if (answerFormat === 'string') {
+      formatedAnswer = String(answer);
+    } else if (answerFormat === 'number') {
+      formatedAnswer = parseInt(answer, 10);
     }
 
-    if (answer === trueAnswer) {
+    const answerForChecking = correctAnswer(formatedAnswer, pointOfQuestion);
+
+    if (formatedAnswer === answerForChecking) {
       console.log('Correct!');
-      result = true;
-    } else if (answer !== trueAnswer) {
-      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${trueAnswer}".\nLet's try again, ${username}!`);
-      result = false;
+      correctAnswerIndicator = true;
+    } else {
+      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${answerForChecking}".\nLet's try again, ${username}!`);
+      correctAnswerIndicator = false;
       break;
     }
-    if (result === true) {
-      console.log(`Congratulations, ${'username'}!`);
-    }
+  }
+  if (correctAnswerIndicator === true) {
+    console.log(`Congratulations, ${username}!`);
   }
 };

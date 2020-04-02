@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { getRandomNumber, isCorrect } from '../index.js';
+import { getRandomNumber } from '../index.js';
 
 const ruleForBrainProgress = 'What number is missing in the progression?\nPlease input only numbers otherwise your answer will be considered as "NaN" (not a number).';
 
@@ -19,9 +19,8 @@ const getArithmeticProgression = (startNumber, step) => {
 
 const toHideNumber = (coll, index) => {
   const result = [];
-
-  // eslint-disable-next-line no-restricted-syntax
-  for (let item of coll) {
+  for (let i = 0; i < coll.length; i += 1) {
+    let item = coll[i];
     if (item === coll[index]) {
       const marker = '..';
       item = marker;
@@ -37,6 +36,16 @@ const collOfRandomNumberSequences = [
   (getArithmeticProgression(getRandomNumber(1, 30), getRandomNumber(1, 5))),
 ];
 
+const isCorrect = (answer, expression) => {
+  if (answer === expression) {
+    return true;
+  }
+  return false;
+};
+
+const indexOfcollOfArithmeticProgression = getRandomItemOfArray();
+
+
 const brainProgres = () => {
   const username = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${username}!`);
@@ -46,7 +55,7 @@ const brainProgres = () => {
   // eslint-disable-next-line no-restricted-syntax
   for (const item of collOfRandomNumberSequences) {
     // eslint-disable-next-line no-eval
-    const indexOfcollOfArithmeticProgression = getRandomItemOfArray();
+
     const getHiddenNumber = toHideNumber(item, indexOfcollOfArithmeticProgression);
     const outputForUser = getHiddenNumber.join(' ');
     const answer = parseInt((readlineSync.question(`Question: ${outputForUser}\nYour answer: `)), 10);

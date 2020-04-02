@@ -1,16 +1,16 @@
 import readlineSync from 'readline-sync';
-import { getRandomNumber, isCorrect } from '../index.js';
+import { getRandomNumber } from '../index.js';
 
 const ruleForBrainGCD = 'Find the greatest common divisor of given numbers.\nPlease input only numbers otherwise your answer will be considered as "NaN" (not a number).';
 
-const collOfPaiersOfRandomNumbers = [
-  [getRandomNumber(1, 50), getRandomNumber(1, 50)],
-  [getRandomNumber(1, 50), getRandomNumber(1, 50)],
-  [getRandomNumber(1, 50), getRandomNumber(1, 50)],
-];
+const isCorrect = (answer, expression) => {
+  if (answer === expression) {
+    return true;
+  }
+  return false;
+};
 
-const getGCD = (x, y) => {
-// Euclidean algorithm - method for computing the GCD
+const getGCD = (x, y) => { // Euclidean algorithm - method for computing the GCD
   if (y > x) {
     return getGCD(y, x);
   }
@@ -20,25 +20,39 @@ const getGCD = (x, y) => {
   return getGCD(y, x % y);
 };
 
+const collOfPaiersOfRandomNumbers = [
+  [getRandomNumber(1, 50), getRandomNumber(1, 50)],
+  [getRandomNumber(1, 50), getRandomNumber(1, 50)],
+  [getRandomNumber(1, 50), getRandomNumber(1, 50)],
+];
+
+const firstPair = getGCD(...collOfPaiersOfRandomNumbers[0]);
+const secondPair = getGCD(...collOfPaiersOfRandomNumbers[1]);
+const thirdPair = getGCD(...collOfPaiersOfRandomNumbers[2]);
+
+const collOfGcdPair = [firstPair, secondPair, thirdPair];
+
+
 const brainGCD = () => {
   const username = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${username}!`);
   console.log(ruleForBrainGCD);
 
   let result;
-  // need to use "for...of" in this function instead of "Array.prototype.forEach()"
-  // eslint-disable-next-line no-restricted-syntax
-  for (const item of collOfPaiersOfRandomNumbers) {
-    // eslint-disable-next-line no-eval
-    const GCD = getGCD(...item);
+
+  for (let i = 0; i < collOfGcdPair.length; i += 1) {
+    const item = collOfGcdPair[i];
+
     const answer = parseInt((readlineSync.question(`Question: ${`${item[0]} ${item[1]}`}\nYour answer: `)), 10);
+    const expression = item;
+
 
     let trueAnswer;
 
-    if (isCorrect(answer, GCD)) {
+    if (isCorrect(answer, expression)) {
       trueAnswer = answer;
     } else {
-      trueAnswer = GCD;
+      trueAnswer = expression;
     }
 
     if (answer === trueAnswer) {
