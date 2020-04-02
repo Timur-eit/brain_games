@@ -1,14 +1,7 @@
 import readlineSync from 'readline-sync';
-import { getRandomNumber } from '../index.js';
+import { getRandomNumber, brainGames } from '../index.js';
 
 const ruleForBrainGCD = 'Find the greatest common divisor of given numbers.\nPlease input only numbers otherwise your answer will be considered as "NaN" (not a number).';
-
-const isCorrect = (answer, expression) => {
-  if (answer === expression) {
-    return true;
-  }
-  return false;
-};
 
 const getGCD = (x, y) => { // Euclidean algorithm - method for computing the GCD
   if (y > x) {
@@ -21,18 +14,34 @@ const getGCD = (x, y) => { // Euclidean algorithm - method for computing the GCD
 };
 
 const collOfPaiersOfRandomNumbers = [
-  [getRandomNumber(1, 50), getRandomNumber(1, 50)],
-  [getRandomNumber(1, 50), getRandomNumber(1, 50)],
-  [getRandomNumber(1, 50), getRandomNumber(1, 50)],
+  [`${getRandomNumber(1, 20)} ${getRandomNumber(1, 20)}`],
+  [`${getRandomNumber(1, 20)} ${getRandomNumber(1, 20)}`],
+  [`${getRandomNumber(1, 20)} ${getRandomNumber(1, 20)}`],
 ];
 
-const firstPair = getGCD(...collOfPaiersOfRandomNumbers[0]);
-const secondPair = getGCD(...collOfPaiersOfRandomNumbers[1]);
-const thirdPair = getGCD(...collOfPaiersOfRandomNumbers[2]);
+const correctAnswerForBrainGCD = (num, expression) => {
+  let trueAnswer;
+  const formatedExpression = parseInt(expression, 10); // нужно преобразовать
+  if (num === getGCD(expression)) {
+    trueAnswer = num;
+  } else {
+    trueAnswer = getGCD(expression);
+  }
+  return trueAnswer;
+};
 
-const collOfGcdPair = [firstPair, secondPair, thirdPair];
+const brainGCD = () => {
+  brainGames(
+    ruleForBrainGCD,
+    collOfPaiersOfRandomNumbers,
+    correctAnswerForBrainGCD,
+    'number',
+  );
+};
 
+export default brainGCD;
 
+/**
 const brainGCD = () => {
   const username = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${username}!`);
@@ -70,3 +79,4 @@ const brainGCD = () => {
 };
 
 export default brainGCD;
+ */
