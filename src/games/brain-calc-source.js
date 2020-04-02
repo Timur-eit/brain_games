@@ -1,5 +1,5 @@
 // import readlineSync from 'readline-sync';
-import { getRandomNumber, brainGamesUltimate } from '../index.js';
+import { getRandomNumber, brainGames } from '../index.js';
 
 const ruleForBrainCalc = 'What is the result of expression?\nPlease input only numbers otherwise your answer will be considered as "NaN" (not a number).';
 
@@ -7,7 +7,7 @@ const collOfOperators = ['+', '-', '*'];
 const getRandomItemOfArray = () => getRandomNumber(0, 3);
 const getRandomOperator = () => collOfOperators[getRandomItemOfArray()];
 
-const getRandomOfExpression = () => { // example return: 4 + 2
+const getRandomOfExpression = () => { // for example: '4 + 2'
   const stringOfExpression = `${getRandomNumber(1, 10)} ${getRandomOperator()} ${getRandomNumber(1, 10)}`;
   return stringOfExpression;
 };
@@ -16,23 +16,28 @@ const collOfRandomExpressions = [
   getRandomOfExpression(),
   getRandomOfExpression(),
   getRandomOfExpression(),
-]; // 3 items of array => 3 questions to user
+];
 
-const isCorrect = (answer, expression) => {
-  if (answer === expression) {
-    return true;
+// eslint-disable-next-line no-eval
+const calculateExpression = (expression) => eval(expression);
+
+const correctAnswerForBrainCalc = (num, expression) => {
+  let trueAnswer;
+  if (num === calculateExpression(expression)) {
+    trueAnswer = num;
+  } else {
+    trueAnswer = calculateExpression(expression);
   }
-  return false;
-};
-
-const calculateExpression = (expression) => {
-  // eslint-disable-next-line no-eval
-  const valueOfExpression = eval(expression);
-  return valueOfExpression;
+  return trueAnswer;
 };
 
 const brainCalc = () => {
-  brainGamesUltimate(ruleForBrainCalc, collOfRandomExpressions, isCorrect, calculateExpression);
+  brainGames(
+    ruleForBrainCalc,
+    collOfRandomExpressions,
+    correctAnswerForBrainCalc,
+    'number',
+  );
 };
 
 export default brainCalc;
