@@ -10,15 +10,16 @@ export const getRandomNumber = (min, max) => {
   return random(maxNumber);
 };
 
-export const brainGames = (gameRules, pointOfQuestion, correctAnswer, answerFormat = 'number') => {
+export const brainGames = (gameRules, collOfpointsOfQuestion, correctAnswer, answerFormat = 'number') => {
   // answerFormat may be 'string' or 'number'
   const username = usernameRequest;
   greeting();
   console.log(gameRules);
 
   let correctAnswerIndicator;
-  for (let round = 0; round < 3; round += 1) {
-    const answer = readlineSync.question(`Question: ${pointOfQuestion}\nYour answer: `);
+  for (let i = 0; i < collOfpointsOfQuestion.length; i += 1) {
+    const itemOfPointsOfQuestion = collOfpointsOfQuestion[i];
+    const answer = readlineSync.question(`Question: ${itemOfPointsOfQuestion}\nYour answer: `);
 
     let formatedAnswer;
 
@@ -28,12 +29,12 @@ export const brainGames = (gameRules, pointOfQuestion, correctAnswer, answerForm
       formatedAnswer = parseInt(answer, 10);
     }
 
-    const answerForChecking = correctAnswer(formatedAnswer, pointOfQuestion);
+    const answerForChecking = correctAnswer(formatedAnswer, itemOfPointsOfQuestion);
 
-    if (formatedAnswer === answerForChecking) {
+    if (answer === answerForChecking) {
       console.log('Correct!');
       correctAnswerIndicator = true;
-    } else {
+    } else if (answer !== answerForChecking) {
       console.log(`"${answer}" is wrong answer ;(. Correct answer was "${answerForChecking}".\nLet's try again, ${username}!`);
       correctAnswerIndicator = false;
       break;
