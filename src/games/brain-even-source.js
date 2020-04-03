@@ -4,7 +4,7 @@ const ruleForBrainEven = 'Answer "yes" if the number is even, otherwise answer "
 
 const isEven = (number, arg2 = null) => {
   /** second argument was set because
-   * checking function of game engien
+   *  checking function of game engine
    *  takes two arguments
   */
   let result;
