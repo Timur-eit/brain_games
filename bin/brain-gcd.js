@@ -2,5 +2,4 @@
 
 import brainGCD from '../src/games/brain-gcd-source.js';
 
-console.log('Welcome to the Brain Games!');
 brainGCD();
