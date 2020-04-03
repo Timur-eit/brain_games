@@ -2,25 +2,11 @@ import { getRandomNumber, brainGames } from '../index.js';
 
 const ruleForBrainEven = 'Answer "yes" if the number is even, otherwise answer "no"';
 
-const isEven = (number, arg2 = null) => {
-  /** second argument was set because
-   *  checking function of game engine
-   *  takes two arguments
-  */
-  let result;
-
-  if (arg2 === null) {
-    if (number % 2 === 0) {
-      result = true;
-    } else if (arg2 !== null) {
-      if (number % 2 === 0) {
-        result = true;
-      } else {
-        result = false;
-      }
-    }
+const isEven = (number) => {
+  if (number % 2 === 0) {
+    return true;
   }
-  return result;
+  return false;
 };
 
 const collOfPointsOfQuestion = [
