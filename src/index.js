@@ -1,7 +1,13 @@
 import readlineSync from 'readline-sync';
 
-export const usernameRequest = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
-export const greeting = () => console.log(`Hello, ${usernameRequest}!`);
+const usernameRequest = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
+export const greeting = (gameRules = null) => {
+  if (gameRules === null) {
+    console.log(`Hello, ${usernameRequest}!`);
+  } else {
+    console.log(`Hello, ${usernameRequest}!\n${gameRules}`);
+  }
+};
 
 export const getRandomNumber = (min, max) => {
   const minNumber = min;
@@ -10,16 +16,24 @@ export const getRandomNumber = (min, max) => {
   return random(maxNumber);
 };
 
-export const brainGames = (gameRules, collOfpointsOfQuestion, correctAnswer, answerFormat = 'number') => {
-  // answerFormat may be 'string' or 'number'
+
+export const brainGames = (
+  gameRules,
+  collOfpointsOfQuestion,
+  correctAnswer,
+  answerFormat = 'number', // answerFormat may be 'string' or 'number'
+) => {
   const username = usernameRequest;
-  greeting();
-  console.log(gameRules);
+  greeting(gameRules);
 
   let correctAnswerIndicator;
+
   for (let i = 0; i < collOfpointsOfQuestion.length; i += 1) {
     const itemOfPointsOfQuestion = collOfpointsOfQuestion[i];
-    const answer = readlineSync.question(`Question: ${itemOfPointsOfQuestion}\nYour answer: `);
+
+    const answer = readlineSync.question(
+      `Question: ${itemOfPointsOfQuestion}\nYour answer: `,
+    );
 
     let formatedAnswer;
 
@@ -35,7 +49,11 @@ export const brainGames = (gameRules, collOfpointsOfQuestion, correctAnswer, ans
       console.log('Correct!');
       correctAnswerIndicator = true;
     } else if (formatedAnswer !== answerForChecking) {
-      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${answerForChecking}".\nLet's try again, ${username}!`);
+      console.log(
+        `"${answer}" is wrong answer ;(.`,
+        `Correct answer was "${answerForChecking}".`,
+        `\nLet's try again, ${username}!`,
+      );
       correctAnswerIndicator = false;
       break;
     }
