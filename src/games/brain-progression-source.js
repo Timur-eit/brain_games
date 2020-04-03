@@ -1,15 +1,13 @@
-import readlineSync from 'readline-sync';
-import { getRandomNumber } from '../index.js';
+import { getRandomNumber, brainGames } from '../index.js';
 
-const ruleForBrainProgress = 'What number is missing in the progression?\nPlease input only numbers otherwise your answer will be considered as "NaN" (not a number).';
+const ruleForBrainProgress = 'What number is missing in the progression?.';
 
-const getRandomItemOfArray = () => getRandomNumber(1, 10);
+const maxLenOfProgression = 10;
 
-const getArithmeticProgression = (startNumber, step) => {
-  const maxLength = 10;
+const getArithmProgression = (startNumber, step) => {
+  const maxLength = maxLenOfProgression;
   let counter = startNumber;
   const result = [];
-
   for (let i = 0; i < maxLength; i += 1) {
     result.push(counter);
     counter += step;
@@ -17,12 +15,15 @@ const getArithmeticProgression = (startNumber, step) => {
   return result;
 };
 
-const toHideNumber = (coll, index) => {
+
+const markerForHiddenNumber = '..';
+
+const hideNumber = (coll, index) => {
   const result = [];
   for (let i = 0; i < coll.length; i += 1) {
     let item = coll[i];
     if (item === coll[index]) {
-      const marker = '..';
+      const marker = markerForHiddenNumber;
       item = marker;
     }
     result.push(item);
@@ -30,57 +31,83 @@ const toHideNumber = (coll, index) => {
   return result;
 };
 
-const collOfRandomNumberSequences = [
-  (getArithmeticProgression(getRandomNumber(1, 30), getRandomNumber(1, 5))),
-  (getArithmeticProgression(getRandomNumber(1, 30), getRandomNumber(1, 5))),
-  (getArithmeticProgression(getRandomNumber(1, 30), getRandomNumber(1, 5))),
+const converToString = (coll) => coll.join(' ');
+
+
+const collOfRandomProgression = [
+  // converted to string for proper output to user and already with hidden number
+  (converToString(
+    hideNumber(
+      getArithmProgression(getRandomNumber(1, 30), getRandomNumber(1, 5)), getRandomNumber(1, 9),
+    ),
+  )
+  ),
+  (converToString(
+    hideNumber(
+      getArithmProgression(getRandomNumber(1, 30), getRandomNumber(1, 5)), getRandomNumber(1, 9),
+    ),
+  )
+  ),
+  (converToString(
+    hideNumber(
+      getArithmProgression(getRandomNumber(1, 30), getRandomNumber(1, 5)), getRandomNumber(1, 9),
+    ),
+  )
+  ),
 ];
 
-const isCorrect = (answer, expression) => {
-  if (answer === expression) {
-    return true;
+
+const getHiddenNumber = (coll, wantedNumIndex, step, maxIndex) => {
+  let wantedNumber;
+  if (wantedNumIndex >= 0 && wantedNumIndex < maxIndex) {
+    wantedNumber = coll[wantedNumIndex + 1] - step;
+  } else {
+    wantedNumber = coll[wantedNumIndex - 1] + step;
   }
-  return false;
+  return wantedNumber;
 };
 
-const indexOfcollOfArithmeticProgression = getRandomItemOfArray();
 
-
-const brainProgres = () => {
-  const username = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${username}!`);
-  console.log(ruleForBrainProgress);
-
+const getStepOfProgression = (coll) => {
   let result;
-  // eslint-disable-next-line no-restricted-syntax
-  for (const item of collOfRandomNumberSequences) {
-    // eslint-disable-next-line no-eval
-
-    const getHiddenNumber = toHideNumber(item, indexOfcollOfArithmeticProgression);
-    const outputForUser = getHiddenNumber.join(' ');
-    const answer = parseInt((readlineSync.question(`Question: ${outputForUser}\nYour answer: `)), 10);
-
-    let trueAnswer;
-
-    if (isCorrect(answer, item[indexOfcollOfArithmeticProgression])) {
-      trueAnswer = answer;
-    } else {
-      trueAnswer = item[indexOfcollOfArithmeticProgression];
-    }
-
-    if (answer === trueAnswer) {
-      console.log('Correct!');
-      result = true;
-    } else if (answer !== trueAnswer) {
-      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${trueAnswer}".\nLet's try again, ${username}!`);
-      result = false;
-      break;
-    }
+  if (coll[0] === '..') {
+    result = coll[2] - coll[1];
+  } else if (coll[1] === '..') {
+    result = coll[3] - coll[2];
+  } else {
+    result = coll[1] - coll[0];
   }
-  if (result === true) {
-    console.log(`Congratulations, ${username}!`);
-  }
+  return result;
 };
 
 
-export default brainProgres;
+const correctAnswerForBrainProgression = (num, expression) => {
+  const convertToArray = (string) => string.split(' ');
+  const progressionForCheck = convertToArray(expression);
+
+  const indexOfHidden = progressionForCheck.indexOf(markerForHiddenNumber);
+  const step = getStepOfProgression(progressionForCheck);
+
+  const answerForCheck = getHiddenNumber(
+    progressionForCheck, indexOfHidden, step, maxLenOfProgression - 1,
+  );
+
+  let trueAnswer;
+
+  if (num === answerForCheck) {
+    trueAnswer = num;
+  } else {
+    trueAnswer = answerForCheck;
+  }
+  return trueAnswer;
+};
+
+
+const brainProgresion = () => brainGames(
+  ruleForBrainProgress,
+  collOfRandomProgression,
+  correctAnswerForBrainProgression,
+  'number',
+);
+
+export default brainProgresion;
