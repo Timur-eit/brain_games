@@ -19,7 +19,7 @@ export const getRandomNumber = (min, max) => {
 
 export const brainGames = (
   gameRules,
-  collOfpointsOfQuestion,
+  pointOfQuestion,
   correctAnswer,
   answerFormat = 'number', // answerFormat may be 'string' or 'number'
 ) => {
@@ -28,8 +28,8 @@ export const brainGames = (
 
   let correctAnswerIndicator;
 
-  for (let i = 0; i < collOfpointsOfQuestion.length; i += 1) {
-    const itemOfPointsOfQuestion = collOfpointsOfQuestion[i];
+  for (let round = 0; round < 3; round += 1) {
+    const itemOfPointsOfQuestion = pointOfQuestion();
 
     const answer = readlineSync.question(
       `Question: ${itemOfPointsOfQuestion}\nYour answer: `,
