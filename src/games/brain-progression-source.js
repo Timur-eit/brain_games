@@ -33,29 +33,12 @@ const hideNumber = (coll, index) => {
 
 const converToString = (coll) => coll.join(' ');
 
-
-const collOfRandomProgression = [
-  // converted to string for proper output to user and already with hidden number
-  (converToString(
-    hideNumber(
-      getArithmProgression(getRandomNumber(1, 30), getRandomNumber(1, 5)), getRandomNumber(1, 9),
-    ),
-  )
-  ),
-  (converToString(
-    hideNumber(
-      getArithmProgression(getRandomNumber(1, 30), getRandomNumber(1, 5)), getRandomNumber(1, 9),
-    ),
-  )
-  ),
-  (converToString(
-    hideNumber(
-      getArithmProgression(getRandomNumber(1, 30), getRandomNumber(1, 5)), getRandomNumber(1, 9),
-    ),
-  )
-  ),
-];
-
+const pointOfQuestionForBrainProgression = () => {
+  const point = converToString(hideNumber(
+    getArithmProgression(getRandomNumber(1, 30), getRandomNumber(1, 5)), getRandomNumber(1, 9),
+  ));
+  return point;
+};
 
 const getHiddenNumber = (coll, wantedNumIndex, step, maxIndex) => {
   let wantedNumber;
@@ -105,7 +88,7 @@ const correctAnswerForBrainProgression = (num, expression) => {
 
 const brainProgresion = () => brainGames(
   ruleForBrainProgress,
-  collOfRandomProgression,
+  pointOfQuestionForBrainProgression,
   correctAnswerForBrainProgression,
   'number',
 );

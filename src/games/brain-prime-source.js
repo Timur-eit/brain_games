@@ -14,11 +14,7 @@ const isPrime = (num) => {
   return true;
 };
 
-const collOfPointsOfQuestion = [
-  getRandomNumber(1, 100),
-  getRandomNumber(1, 100),
-  getRandomNumber(1, 100),
-];
+const pointOfQuestionForBrainPrime = () => getRandomNumber(1, 100);
 
 const correctAnswerForBrainPrime = (answer, num) => {
   let trueAnswer;
@@ -37,7 +33,7 @@ const correctAnswerForBrainPrime = (answer, num) => {
 export const brainPrime = () => {
   brainGames(
     ruleForBrainPrime,
-    collOfPointsOfQuestion,
+    pointOfQuestionForBrainPrime,
     correctAnswerForBrainPrime,
     'string',
   );

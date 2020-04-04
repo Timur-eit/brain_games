@@ -12,11 +12,7 @@ const getGCD = (x, y) => { // Euclidean algorithm - method for computing the GCD
   return getGCD(y, x % y);
 };
 
-const collOfPaiersOfRandomNumbers = [
-  `${getRandomNumber(1, 20)} ${getRandomNumber(1, 20)}`,
-  `${getRandomNumber(1, 20)} ${getRandomNumber(1, 20)}`,
-  `${getRandomNumber(1, 20)} ${getRandomNumber(1, 20)}`,
-];
+const pointOfQuestionForBrainGCD = () => `${getRandomNumber(1, 20)} ${getRandomNumber(1, 20)}`;
 
 const correctAnswerForBrainGCD = (num, expression) => {
   const convertExpressionToArray = (string) => string.split(' ');
@@ -46,7 +42,7 @@ const correctAnswerForBrainGCD = (num, expression) => {
 const brainGCD = () => {
   brainGames(
     ruleForBrainGCD,
-    collOfPaiersOfRandomNumbers,
+    pointOfQuestionForBrainGCD,
     correctAnswerForBrainGCD,
     'number',
   );

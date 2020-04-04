@@ -9,11 +9,7 @@ const isEven = (number) => {
   return false;
 };
 
-const collOfPointsOfQuestion = [
-  getRandomNumber(1, 100),
-  getRandomNumber(1, 100),
-  getRandomNumber(1, 100),
-];
+const pointOfQuestionForBrainEven = () => getRandomNumber(1, 100);
 
 const correctAnswerForBrainEven = (answer, num) => {
   let trueAnswer;
@@ -33,7 +29,7 @@ const correctAnswerForBrainEven = (answer, num) => {
 export const brainEven = () => {
   brainGames(
     ruleForBrainEven,
-    collOfPointsOfQuestion,
+    pointOfQuestionForBrainEven,
     correctAnswerForBrainEven,
     'string',
   );

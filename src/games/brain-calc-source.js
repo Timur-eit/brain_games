@@ -1,6 +1,6 @@
 import { getRandomNumber, brainGames } from '../index.js';
 
-const ruleForBrainCalc = 'What is the result of expression?\nPlease input only numbers otherwise your answer will be considered as "NaN" (not a number).';
+const ruleForBrainCalc = 'What is the result of expression?';
 
 const collOfOperators = ['+', '-', '*'];
 const getRandomItemOfArray = () => getRandomNumber(0, 3);
@@ -11,11 +11,7 @@ const getRandomOfExpression = () => { // for example: '4 + 2'
   return stringOfExpression;
 };
 
-const collOfRandomExpressions = [
-  getRandomOfExpression(),
-  getRandomOfExpression(),
-  getRandomOfExpression(),
-];
+const pointOfQuestionForBrainCalc = () => getRandomOfExpression();
 
 // eslint-disable-next-line no-eval
 const calculateExpression = (expression) => eval(expression);
@@ -33,7 +29,7 @@ const correctAnswerForBrainCalc = (num, expression) => {
 const brainCalc = () => {
   brainGames(
     ruleForBrainCalc,
-    collOfRandomExpressions,
+    pointOfQuestionForBrainCalc,
     correctAnswerForBrainCalc,
     'number',
   );
