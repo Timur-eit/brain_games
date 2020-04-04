@@ -1,4 +1,3 @@
-// import readlineSync from 'readline-sync';
 import { getRandomNumber, brainGames } from '../index.js';
 
 const ruleForBrainCalc = 'What is the result of expression?\nPlease input only numbers otherwise your answer will be considered as "NaN" (not a number).';

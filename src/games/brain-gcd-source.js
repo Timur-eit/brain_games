@@ -19,10 +19,7 @@ const collOfPaiersOfRandomNumbers = [
 ];
 
 const correctAnswerForBrainGCD = (num, expression) => {
-
-  const convertExpressionToArray = (string) => {
-    return string.split(' ');
-  };
+  const convertExpressionToArray = (string) => string.split(' ');
 
   const convertItemsOfArrayToInt = (array) => {
     const result = [];
