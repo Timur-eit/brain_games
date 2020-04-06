@@ -20,15 +20,28 @@ const getRandomOfExpression = () => { // for example: '4 + 2'
 
 const pointOfQuestionForBrainCalc = () => getRandomOfExpression();
 
-// eslint-disable-next-line no-eval
-const calculateExpression = (expression) => eval(expression);
+const toCompute = (string) => {
+  const coll = string.split(' ');
+  const a = parseInt(coll[0], 10);
+  const b = parseInt(coll[2], 10);
+  let result;
+
+  if (coll.includes('+')) {
+    result = a + b;
+  } else if (coll.includes('-')) {
+    result = a - b;
+  } else if (coll.includes('*')) {
+    result = a * b;
+  }
+  return result;
+};
 
 const correctAnswerForBrainCalc = (num, expression) => {
   let trueAnswer;
-  if (num === calculateExpression(expression)) {
+  if (num === toCompute(expression)) {
     trueAnswer = num;
   } else {
-    trueAnswer = calculateExpression(expression);
+    trueAnswer = toCompute(expression);
   }
   return trueAnswer;
 };
