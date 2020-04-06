@@ -1,19 +1,12 @@
 import readlineSync from 'readline-sync';
 
-const usernameRequest = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
 export const greeting = (gameRules = null) => {
+  const username = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
   if (gameRules === null) {
-    console.log(`Hello, ${usernameRequest}!`);
+    console.log(`Hello, ${username}!`);
   } else {
-    console.log(`Hello, ${usernameRequest}!\n${gameRules}`);
+    console.log(`Hello, ${username}!\n${gameRules}`);
   }
-};
-
-export const getRandomNumber = (min, max) => {
-  const minNumber = min;
-  const maxNumber = max;
-  const random = () => Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
-  return random(maxNumber);
 };
 
 
@@ -23,8 +16,8 @@ export const brainGames = (
   correctAnswer,
   answerFormat = 'number', // answerFormat may be 'string' or 'number'
 ) => {
-  const username = usernameRequest;
-  greeting(gameRules);
+  const username = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
+  console.log(`Hello, ${username}!\n${gameRules}`);
 
   let correctAnswerIndicator;
 

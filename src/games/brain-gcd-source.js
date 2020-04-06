@@ -1,4 +1,11 @@
-import { getRandomNumber, brainGames } from '../index.js';
+import { brainGames } from '../index.js';
+
+const getRandomNumber = (min, max) => {
+  const minNumber = min;
+  const maxNumber = max;
+  const random = () => Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
+  return random(maxNumber);
+};
 
 const ruleForBrainGCD = 'Find the greatest common divisor of given numbers.';
 
