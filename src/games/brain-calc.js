@@ -38,7 +38,7 @@ const toCompute = (string) => {
 
 const correctAnswerForBrainCalc = (num, expression) => {
   let trueAnswer;
-  if (num === toCompute(expression)) {
+  if (String(num) === String(toCompute(expression))) {
     trueAnswer = num;
   } else {
     trueAnswer = toCompute(expression);
@@ -51,7 +51,6 @@ const brainCalc = () => {
     ruleForBrainCalc,
     pointOfQuestionForBrainCalc,
     correctAnswerForBrainCalc,
-    'number',
   );
 };
 

@@ -42,7 +42,6 @@ export const brainPrime = () => {
     ruleForBrainPrime,
     pointOfQuestionForBrainPrime,
     correctAnswerForBrainPrime,
-    'string',
   );
 };
 

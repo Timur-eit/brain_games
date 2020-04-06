@@ -14,7 +14,6 @@ export const brainGames = (
   gameRules,
   pointOfQuestion,
   correctAnswer,
-  answerFormat = 'number', // answerFormat may be 'string' or 'number'
 ) => {
   const username = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
   console.log(`Hello, ${username}!\n${gameRules}`);
@@ -26,22 +25,14 @@ export const brainGames = (
       `Question: ${itemOfPointsOfQuestion}\nYour answer: `,
     );
 
-    let formatedAnswer;
+    const answerForChecking = correctAnswer(answer, itemOfPointsOfQuestion);
 
-    if (answerFormat === 'string') {
-      formatedAnswer = String(answer);
-    } else if (answerFormat === 'number') {
-      formatedAnswer = parseInt(answer, 10);
-    }
-
-    const answerForChecking = correctAnswer(formatedAnswer, itemOfPointsOfQuestion);
-
-    if (formatedAnswer === answerForChecking) {
+    if (answer === answerForChecking) {
       console.log('Correct!');
       if (round === 3) {
         console.log(`Congratulations, ${username}!`);
       }
-    } else if (formatedAnswer !== answerForChecking) {
+    } else if (answer !== answerForChecking) {
       console.log(
         `"${answer}" is wrong answer ;(.`,
         `Correct answer was "${answerForChecking}".`,

@@ -84,7 +84,7 @@ const correctAnswerForBrainProgression = (num, expression) => {
 
   let trueAnswer;
 
-  if (num === answerForCheck) {
+  if (String(num) === String(answerForCheck)) {
     trueAnswer = num;
   } else {
     trueAnswer = answerForCheck;
@@ -97,7 +97,6 @@ const brainProgresion = () => brainGames(
   ruleForBrainProgress,
   pointOfQuestionForBrainProgression,
   correctAnswerForBrainProgression,
-  'number',
 );
 
 export default brainProgresion;

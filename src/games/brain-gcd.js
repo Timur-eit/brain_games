@@ -37,7 +37,7 @@ const correctAnswerForBrainGCD = (num, expression) => {
 
   let trueAnswer;
 
-  if (num === answerForCheck) {
+  if (String(num) === String(answerForCheck)) {
     trueAnswer = num;
   } else {
     trueAnswer = answerForCheck;
@@ -51,7 +51,6 @@ const brainGCD = () => {
     ruleForBrainGCD,
     pointOfQuestionForBrainGCD,
     correctAnswerForBrainGCD,
-    'number',
   );
 };
 

@@ -38,7 +38,6 @@ export const brainEven = () => {
     ruleForBrainEven,
     pointOfQuestionForBrainEven,
     correctAnswerForBrainEven,
-    'string',
   );
 };
 
