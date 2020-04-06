@@ -1,5 +1,7 @@
 import { brainGames } from '../index.js';
 
+const ruleForBrainCalc = 'What is the result of expression?';
+
 const getRandomNumber = (min, max) => {
   const minNumber = min;
   const maxNumber = max;
@@ -7,18 +9,12 @@ const getRandomNumber = (min, max) => {
   return random(maxNumber);
 };
 
-const ruleForBrainCalc = 'What is the result of expression?';
-
 const collOfOperators = ['+', '-', '*'];
-const getRandomItemOfArray = () => getRandomNumber(0, 3);
-const getRandomOperator = () => collOfOperators[getRandomItemOfArray()];
 
 const getRandomOfExpression = () => { // for example: '4 + 2'
-  const stringOfExpression = `${getRandomNumber(1, 10)} ${getRandomOperator()} ${getRandomNumber(1, 10)}`;
+  const stringOfExpression = `${getRandomNumber(1, 10)} ${collOfOperators[getRandomNumber(0, 3)]} ${getRandomNumber(1, 10)}`;
   return stringOfExpression;
 };
-
-const pointOfQuestionForBrainCalc = () => getRandomOfExpression();
 
 const toCompute = (string) => {
   const coll = string.split(' ');
@@ -36,7 +32,7 @@ const toCompute = (string) => {
   return result;
 };
 
-const correctAnswerForBrainCalc = (num, expression) => {
+const checkCorrectAnswer = (num, expression) => {
   let trueAnswer;
   if (String(num) === String(toCompute(expression))) {
     trueAnswer = num;
@@ -49,8 +45,8 @@ const correctAnswerForBrainCalc = (num, expression) => {
 const brainCalc = () => {
   brainGames(
     ruleForBrainCalc,
-    pointOfQuestionForBrainCalc,
-    correctAnswerForBrainCalc,
+    getRandomOfExpression,
+    checkCorrectAnswer,
   );
 };
 
