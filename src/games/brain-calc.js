@@ -32,21 +32,22 @@ const toCompute = (string) => {
   return result;
 };
 
-const checkCorrectAnswer = (num, expression) => {
-  let trueAnswer;
-  if (String(num) === String(toCompute(expression))) {
-    trueAnswer = num;
-  } else {
-    trueAnswer = toCompute(expression);
+const getCorrectAnswer = (expression) => toCompute(expression);
+
+const checkAnswer = (answer, question) => {
+  if (String(answer) === String(getCorrectAnswer(question))) {
+    return true;
   }
-  return trueAnswer;
+  return false;
 };
+
 
 const brainCalc = () => {
   brainGames(
     ruleForBrainCalc,
     getRandomOfExpression,
-    checkCorrectAnswer,
+    getCorrectAnswer,
+    checkAnswer,
   );
 };
 

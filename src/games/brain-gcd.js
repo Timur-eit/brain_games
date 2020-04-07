@@ -21,28 +21,27 @@ const getGCD = (x, y) => { // Euclidean algorithm - method for computing the GCD
 
 const pointOfQuestionForBrainGCD = () => `${getRandomNumber(1, 20)} ${getRandomNumber(1, 20)}`;
 
-const correctAnswerForBrainGCD = (num, expression) => {
+const getCorrectAnswer = (expression) => {
   const convertExpressionToArray = (string) => string.split(' ');
-
-  const convertItemsOfArrayToInt = (array) => {
+  const convertItemsOfArrayToInt = (coll) => {
     const result = [];
-    for (let i = 0; i < array.length; i += 1) {
-      const item = array[i];
+    for (let i = 0; i < coll.length; i += 1) {
+      const item = coll[i];
       result.push(parseInt(item, 10));
     }
     return result;
   };
+  const array = convertExpressionToArray(expression);
+  const collWithDigits = convertItemsOfArrayToInt(array);
+  const finalResult = getGCD(...collWithDigits);
+  return finalResult;
+};
 
-  const answerForCheck = getGCD(...convertItemsOfArrayToInt(convertExpressionToArray(expression)));
-
-  let trueAnswer;
-
-  if (String(num) === String(answerForCheck)) {
-    trueAnswer = num;
-  } else {
-    trueAnswer = answerForCheck;
+const checkAnswer = (answer, question) => {
+  if (String(answer) === String(getCorrectAnswer(question))) {
+    return true;
   }
-  return trueAnswer;
+  return false;
 };
 
 
@@ -50,7 +49,8 @@ const brainGCD = () => {
   brainGames(
     ruleForBrainGCD,
     pointOfQuestionForBrainGCD,
-    correctAnswerForBrainGCD,
+    getCorrectAnswer,
+    checkAnswer,
   );
 };
 

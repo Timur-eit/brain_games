@@ -23,25 +23,30 @@ const isPrime = (num) => {
 
 const pointOfQuestionForBrainPrime = () => getRandomNumber(1, 100);
 
-const correctAnswerForBrainPrime = (answer, num) => {
-  let trueAnswer;
-  if (answer === 'yes' && isPrime(num)) {
-    trueAnswer = 'yes';
-  } else if (answer === 'no' && !isPrime(num)) {
-    trueAnswer = 'no';
-  } else if (answer !== 'yes' && isPrime(num)) {
-    trueAnswer = 'yes';
-  } else if (answer !== 'no' && !isPrime(num)) {
-    trueAnswer = 'no';
+const getCorrectAnswer = (num) => {
+  let correctAnswer;
+  if (isPrime(num)) {
+    correctAnswer = 'yes';
+  } else {
+    correctAnswer = 'no';
   }
-  return trueAnswer;
+  return correctAnswer;
 };
+
+const checkAnswer = (answer, question) => {
+  if (String(answer) === getCorrectAnswer(question)) {
+    return true;
+  }
+  return false;
+};
+
 
 export const brainPrime = () => {
   brainGames(
     ruleForBrainPrime,
     pointOfQuestionForBrainPrime,
-    correctAnswerForBrainPrime,
+    getCorrectAnswer,
+    checkAnswer,
   );
 };
 

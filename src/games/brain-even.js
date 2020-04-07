@@ -18,18 +18,22 @@ const isEven = (number) => {
 
 const pointOfQuestionForBrainEven = () => getRandomNumber(1, 100);
 
-const correctAnswerForBrainEven = (answer, num) => {
-  let trueAnswer;
-  if (answer === 'yes' && isEven(num)) {
-    trueAnswer = 'yes';
-  } else if (answer === 'no' && !isEven(num)) {
-    trueAnswer = 'no';
-  } else if (answer !== 'yes' && isEven(num)) {
-    trueAnswer = 'yes';
-  } else if (answer !== 'no' && !isEven(num)) {
-    trueAnswer = 'no';
+const getCorrectAnswer = (num) => {
+  let correctAnswer;
+  if (isEven(num)) {
+    correctAnswer = 'yes';
+  } else {
+    correctAnswer = 'no';
   }
-  return trueAnswer;
+  return correctAnswer;
+};
+
+
+const checkAnswer = (answer, question) => {
+  if (String(answer) === getCorrectAnswer(question)) {
+    return true;
+  }
+  return false;
 };
 
 
@@ -37,7 +41,8 @@ export const brainEven = () => {
   brainGames(
     ruleForBrainEven,
     pointOfQuestionForBrainEven,
-    correctAnswerForBrainEven,
+    getCorrectAnswer,
+    checkAnswer,
   );
 };
 
