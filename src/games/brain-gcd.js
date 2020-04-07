@@ -1,5 +1,8 @@
 import { brainGames } from '../index.js';
 
+const ruleForBrainGCD = 'Find the greatest common divisor of given numbers.';
+
+
 const getRandomNumber = (min, max) => {
   const minNumber = min;
   const maxNumber = max;
@@ -7,7 +10,6 @@ const getRandomNumber = (min, max) => {
   return random(maxNumber);
 };
 
-const ruleForBrainGCD = 'Find the greatest common divisor of given numbers.';
 
 const getGCD = (x, y) => { // Euclidean algorithm - method for computing the GCD
   if (y > x) {

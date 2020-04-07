@@ -2,6 +2,7 @@ import { brainGames } from '../index.js';
 
 const ruleForBrainCalc = 'What is the result of expression?';
 
+
 const getRandomNumber = (min, max) => {
   const minNumber = min;
   const maxNumber = max;

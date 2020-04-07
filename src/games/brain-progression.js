@@ -2,6 +2,7 @@ import { brainGames } from '../index.js';
 
 const ruleForBrainProgress = 'What number is missing in the progression?.';
 
+
 const getRandomNumber = (min, max) => {
   const minNumber = min;
   const maxNumber = max;

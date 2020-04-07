@@ -1,5 +1,8 @@
 import { brainGames } from '../index.js';
 
+const ruleForBrainEven = 'Answer "yes" if the number is even, otherwise answer "no"';
+
+
 const getRandomNumber = (min, max) => {
   const minNumber = min;
   const maxNumber = max;
@@ -7,7 +10,6 @@ const getRandomNumber = (min, max) => {
   return random(maxNumber);
 };
 
-const ruleForBrainEven = 'Answer "yes" if the number is even, otherwise answer "no"';
 
 const isEven = (number) => {
   if (number % 2 === 0) {
