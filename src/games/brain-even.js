@@ -2,7 +2,6 @@ import { brainGames } from '../index.js';
 
 const ruleForBrainEven = 'Answer "yes" if the number is even, otherwise answer "no"';
 
-
 const getRandomNumber = (min, max) => {
   const minNumber = min;
   const maxNumber = max;
@@ -10,15 +9,7 @@ const getRandomNumber = (min, max) => {
   return random(maxNumber);
 };
 
-
-const isEven = (number) => {
-  if (number % 2 === 0) {
-    return true;
-  }
-  return false;
-};
-
-const pointOfQuestionForBrainEven = () => getRandomNumber(1, 100);
+const isEven = (number) => number % 2 === 0;
 
 const getCorrectAnswer = (num) => {
   let correctAnswer;
@@ -30,22 +21,12 @@ const getCorrectAnswer = (num) => {
   return correctAnswer;
 };
 
-
-const checkAnswer = (answer, question) => {
-  if (String(answer) === getCorrectAnswer(question)) {
-    return true;
-  }
-  return false;
+const pointOfQuestionForBrainEven = () => {
+  const question = getRandomNumber(1, 100);
+  const answer = getCorrectAnswer(question);
+  return [question, answer];
 };
 
-
-export const brainEven = () => {
-  brainGames(
-    ruleForBrainEven,
-    pointOfQuestionForBrainEven,
-    getCorrectAnswer,
-    checkAnswer,
-  );
-};
+export const brainEven = () => brainGames(ruleForBrainEven, pointOfQuestionForBrainEven);
 
 export default brainEven;
