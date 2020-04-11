@@ -2,7 +2,6 @@ import { brainGames } from '../index.js';
 
 const ruleForBrainPrime = 'Answer "yes" if given number is prime, otherwise answer "no".';
 
-
 const getRandomNumber = (min, max) => {
   const minNumber = min;
   const maxNumber = max;
@@ -22,8 +21,6 @@ const isPrime = (num) => {
   return true;
 };
 
-const pointOfQuestionForBrainPrime = () => getRandomNumber(1, 100);
-
 const getCorrectAnswer = (num) => {
   let correctAnswer;
   if (isPrime(num)) {
@@ -34,21 +31,13 @@ const getCorrectAnswer = (num) => {
   return correctAnswer;
 };
 
-const checkAnswer = (answer, question) => {
-  if (String(answer) === getCorrectAnswer(question)) {
-    return true;
-  }
-  return false;
+const pointOfQuestionForBrainPrime = () => {
+  const question = getRandomNumber(1, 100);
+  const answer = getCorrectAnswer(question);
+
+  return [question, answer];
 };
 
-
-export const brainPrime = () => {
-  brainGames(
-    ruleForBrainPrime,
-    pointOfQuestionForBrainPrime,
-    getCorrectAnswer,
-    checkAnswer,
-  );
-};
+export const brainPrime = () => brainGames(ruleForBrainPrime, pointOfQuestionForBrainPrime);
 
 export default brainPrime;
