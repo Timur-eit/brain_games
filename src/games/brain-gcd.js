@@ -2,14 +2,12 @@ import { brainGames } from '../index.js';
 
 const ruleForBrainGCD = 'Find the greatest common divisor of given numbers.';
 
-
 const getRandomNumber = (min, max) => {
   const minNumber = min;
   const maxNumber = max;
   const random = () => Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
   return random(maxNumber);
 };
-
 
 const getGCD = (x, y) => { // Euclidean algorithm - method for computing the GCD
   if (y > x) {
@@ -21,8 +19,6 @@ const getGCD = (x, y) => { // Euclidean algorithm - method for computing the GCD
   return getGCD(y, x % y);
 };
 
-const pointOfQuestionForBrainGCD = () => `${getRandomNumber(1, 20)} ${getRandomNumber(1, 20)}`;
-
 const getCorrectAnswer = (expression) => {
   const convertExpressionToArray = (string) => string.split(' ');
   const convertItemsOfArrayToInt = (coll) => {
@@ -33,27 +29,30 @@ const getCorrectAnswer = (expression) => {
     }
     return result;
   };
-  const array = convertExpressionToArray(expression);
-  const collWithDigits = convertItemsOfArrayToInt(array);
+
+  const pairOfSymbpols = convertExpressionToArray(expression);
+  const collWithDigits = convertItemsOfArrayToInt(pairOfSymbpols);
   const finalResult = getGCD(...collWithDigits);
   return finalResult;
 };
 
+const pointOfQuestionForBrainGCD = () => {
+  const question = `${getRandomNumber(1, 20)} ${getRandomNumber(1, 20)}`;
+  const answer = getCorrectAnswer(question).toString();
+
+  return [question, answer];
+};
+
+/**
 const checkAnswer = (answer, question) => {
   if (String(answer) === String(getCorrectAnswer(question))) {
     return true;
   }
   return false;
 };
+ */
 
 
-const brainGCD = () => {
-  brainGames(
-    ruleForBrainGCD,
-    pointOfQuestionForBrainGCD,
-    getCorrectAnswer,
-    checkAnswer,
-  );
-};
+const brainGCD = () => brainGames(ruleForBrainGCD, pointOfQuestionForBrainGCD);
 
 export default brainGCD;
