@@ -43,16 +43,6 @@ const pointOfQuestionForBrainGCD = () => {
   return [question, answer];
 };
 
-/**
-const checkAnswer = (answer, question) => {
-  if (String(answer) === String(getCorrectAnswer(question))) {
-    return true;
-  }
-  return false;
-};
- */
-
-
 const brainGCD = () => brainGames(ruleForBrainGCD, pointOfQuestionForBrainGCD);
 
 export default brainGCD;
