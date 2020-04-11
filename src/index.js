@@ -9,24 +9,15 @@ export const greeting = (gameRules = null) => {
   }
 };
 
-
-export const brainGames = (
-  gameRules,
-  pointOfQuestion,
-  getCorrectAnswer,
-  checkAnswer,
-
-) => {
+export const brainGames = (rules, question) => {
   const username = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
-  console.log(`Hello, ${username}!\n${gameRules}`);
+  console.log(`Hello, ${username}!\n${rules}`);
 
   for (let round = 1; round <= 3; round += 1) {
-    const itemOfPointsOfQuestion = pointOfQuestion();
+    const [itemOfQuestion, correctAnswer] = question();
+    const answer = readlineSync.question(`Question: ${itemOfQuestion}\nYour answer: `);
 
-    const answer = readlineSync.question(`Question: ${itemOfPointsOfQuestion}\nYour answer: `);
-    const correctAnswer = getCorrectAnswer(itemOfPointsOfQuestion);
-
-    if (checkAnswer(answer, itemOfPointsOfQuestion)) {
+    if (answer === correctAnswer) {
       console.log('Correct!');
       if (round === 3) {
         console.log(`Congratulations, ${username}!`);
