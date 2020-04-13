@@ -11,12 +11,17 @@ const getRandomNumber = (min, max) => {
 
 const toCompute = (firstNumber, secondNumber, operator) => {
   let result;
-  if (operator === '+') {
-    result = firstNumber + secondNumber;
-  } else if (operator === '-') {
-    result = firstNumber - secondNumber;
-  } else if (operator === '*') {
-    result = firstNumber * secondNumber;
+  switch (operator) {
+    case '+':
+      result = firstNumber + secondNumber;
+      break;
+    case '-':
+      result = firstNumber - secondNumber;
+      break;
+    case '*':
+      result = firstNumber * secondNumber;
+      break;
+    default:
   }
   return result;
 };
@@ -25,9 +30,9 @@ const getRandomOfExpression = () => {
   const collOfOperators = ['+', '-', '*'];
   const firstNumber = getRandomNumber(1, 10);
   const secondNumber = getRandomNumber(1, 10);
-  const operator = collOfOperators[getRandomNumber(0, 3)];
+  const operator = collOfOperators[getRandomNumber(0, collOfOperators.length)];
   const stringOfExpression = `${firstNumber} ${operator} ${secondNumber}`;
-  const answer = toCompute(firstNumber, secondNumber, operator);
+  const answer = toCompute(firstNumber, secondNumber, operator).toString();
   return [stringOfExpression, answer];
 };
 
