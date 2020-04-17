@@ -1,49 +1,35 @@
 import { brainGames } from '../index.js';
+import getRandomNumber from '../utils.js';
 
 const ruleForBrainProgress = 'What number is missing in the progression?.';
 
-const getRandomNumber = (min, max) => {
-  const minNumber = min;
-  const maxNumber = max;
-  const random = () => Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
-  return random(maxNumber);
-};
-
-const getProgressionWithHiddenNumber = (coll, index) => {
-  const markerForHiddenNumber = '..';
-  const result = [];
-  for (let i = 0; i < coll.length; i += 1) {
-    let item = coll[i];
-    if (item === coll[index]) {
-      const marker = markerForHiddenNumber;
-      item = marker;
-    }
-    result.push(item);
+const getArithmProgressionAndAnswer = (startNumber, step) => {
+  const result = [startNumber];
+  for (let i = 1; i < 10; i += 1) {
+    result.push(startNumber + step * i);
   }
   return result;
 };
 
-const getArithmProgressionAndAnswer = (startNumber, step, index) => {
-  const maxLength = 10;
-  let counter = startNumber;
+const getProgressionWithHiddenNumber = (coll, index) => {
   const result = [];
-  for (let i = 0; i < maxLength; i += 1) {
-    result.push(counter);
-    counter += step;
+  for (let i = 0; i < coll.length; i += 1) {
+    let item = coll[i];
+    if (i === index) {
+      item = '..';
+    }
+    result.push(item);
   }
-  const answer = result[index];
-  const progression = getProgressionWithHiddenNumber(result, index);
+  const progression = result;
+  const answer = coll[index];
   return [progression, answer];
 };
 
 const getQuestionAndAnswer = () => {
-  const [progression, answer] = getArithmProgressionAndAnswer(
-    getRandomNumber(1, 30),
-    getRandomNumber(1, 5),
-    getRandomNumber(1, 9),
-  );
+  const progression = getArithmProgressionAndAnswer(getRandomNumber(1, 15), getRandomNumber(1, 5));
+  const [question, answer] = getProgressionWithHiddenNumber(progression, getRandomNumber(1, 9));
 
-  const questionString = progression.join(' ');
+  const questionString = question.join(' ');
   const answerString = answer.toString();
 
   return [questionString, answerString];
