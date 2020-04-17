@@ -7,7 +7,8 @@ export const greeting = () => {
 
 export const brainGames = (rules, question) => {
   const username = readlineSync.question('Welcome to the Brain Games!\nMay I have your name? ');
-  console.log(`Hello, ${username}!\n${rules}`);
+  console.log(`Hello, ${username}!`);
+  console.log(rules);
 
   for (let round = 1; round <= 3; round += 1) {
     const [itemOfQuestion, correctAnswer] = question();
