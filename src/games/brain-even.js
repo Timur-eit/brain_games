@@ -11,6 +11,6 @@ const getRound = () => {
   return [question, answer];
 };
 
-const runBrainEven = () => brainGames(description, getRound);
+const runEven = () => brainGames(description, getRound);
 
-export default runBrainEven;
+export default runEven;
