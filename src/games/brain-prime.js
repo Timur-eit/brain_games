@@ -22,6 +22,6 @@ const getRound = () => {
   return [question, answer];
 };
 
-const runBrainPrime = () => brainGames(description, getRound);
+const runPrime = () => brainGames(description, getRound);
 
-export default runBrainPrime;
+export default runPrime;
