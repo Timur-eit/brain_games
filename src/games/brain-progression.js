@@ -1,39 +1,33 @@
 import brainGames from '../index.js';
-import { getRandomNumber } from '../utils.js';
+import getRandomNumber from '../utils.js';
 
-const ruleForBrainProgress = 'What number is missing in the progression?.';
+const description = 'What number is missing in the progression?.';
 
-const getProgressionAndAnswer = (startNumber, step) => {
+const getProgression = (startNumber, step, indexOfHiddenNum) => {
   const progression = [startNumber];
   for (let i = 1; i < 10; i += 1) {
-    progression.push(startNumber + step * i);
-  }
-
-  const hiddenNumber = progression[getRandomNumber(0, progression.length)];
-  const progressionWithHiddenNumber = progression.map((item) => {
-    let numberOfProgression = item;
-    if (numberOfProgression === hiddenNumber) {
-      numberOfProgression = '..';
+    let item = startNumber + step * i;
+    if (i === indexOfHiddenNum) {
+      item = '..';
     }
-    return numberOfProgression;
-  });
-
-  return [progressionWithHiddenNumber, hiddenNumber];
+    progression.push(item);
+  }
+  const hiddenNumber = startNumber + indexOfHiddenNum * step;
+  return [progression, hiddenNumber];
 };
 
 
-const getProgressionAndAnswerForGame = () => {
-  const [question, answer] = getProgressionAndAnswer(getRandomNumber(1, 15), getRandomNumber(1, 5));
-  const progressionForUser = question.join(' ');
-  const answerForGameEngine = answer.toString();
+const getRound = () => {
+  const [question, answer] = getProgression(
+    getRandomNumber(1, 15),
+    getRandomNumber(1, 5),
+    getRandomNumber(1, 8),
+  );
 
-  return [progressionForUser, answerForGameEngine];
+  return [question.join(' '), answer.toString()];
 };
 
 
-const runBrainProgresion = () => brainGames(
-  ruleForBrainProgress,
-  getProgressionAndAnswerForGame,
-);
+const runProgresion = () => brainGames(description, getRound);
 
-export default runBrainProgresion;
+export default runProgresion;
