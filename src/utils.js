@@ -1,8 +1,9 @@
-const getRandomNumber = (min, max) => {
-  const minNumber = min;
-  const maxNumber = max;
-  const random = () => Math.floor(Math.random() * (maxNumber - minNumber)) + minNumber;
-  return random(maxNumber);
-};
+import readlineSync from 'readline-sync';
 
-export default getRandomNumber;
+export const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+
+export const greeting = () => {
+  console.log('Welcome to the Brain Games!');
+  const username = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${username}!`);
+};
