@@ -1,7 +1,7 @@
 import brainGames from '../index.js';
-import { getRandomNumber } from '../utils.js';
+import getRandomNumber from '../utils.js';
 
-const ruleForBrainGCD = 'Find the greatest common divisor of given numbers.';
+const description = 'Find the greatest common divisor of given numbers.';
 
 const getGCD = (x, y) => {
   // Euclidean algorithm
@@ -14,14 +14,14 @@ const getGCD = (x, y) => {
   return getGCD(y, x % y);
 };
 
-const getPairOfNumbersAndGcd = () => {
+const getRound = () => {
   const firstNumber = getRandomNumber(1, 20);
   const secodNumber = getRandomNumber(1, 20);
-  const pairOfNumbersForUser = `${firstNumber} ${secodNumber}`;
+  const question = `${firstNumber} ${secodNumber}`;
   const answer = getGCD(firstNumber, secodNumber).toString();
-  return [pairOfNumbersForUser, answer];
+  return [question, answer];
 };
 
-const runBrainGcd = () => brainGames(ruleForBrainGCD, getPairOfNumbersAndGcd);
+const runGcd = () => brainGames(description, getRound);
 
-export default runBrainGcd;
+export default runGcd;
