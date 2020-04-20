@@ -1,5 +1,5 @@
-import { brainGames } from '../index.js';
-import getRandomNumber from '../utils.js';
+import brainGames from '../index.js';
+import { getRandomNumber } from '../utils.js';
 
 const ruleForBrainPrime = 'Answer "yes" if given number is prime, otherwise answer "no".';
 
@@ -15,15 +15,13 @@ const isPrime = (num) => {
   return true;
 };
 
-const getCorrectAnswer = (num) => (isPrime(num) ? 'yes' : 'no');
+const getPrimeNumberAndAnswer = () => {
+  const numberForUser = getRandomNumber(1, 100);
+  const answer = isPrime(numberForUser) ? 'yes' : 'no';
 
-const pointOfQuestionForBrainPrime = () => {
-  const question = getRandomNumber(1, 100);
-  const answer = getCorrectAnswer(question);
-
-  return [question, answer];
+  return [numberForUser, answer];
 };
 
-const brainPrime = () => brainGames(ruleForBrainPrime, pointOfQuestionForBrainPrime);
+const runBrainPrime = () => brainGames(ruleForBrainPrime, getPrimeNumberAndAnswer);
 
-export default brainPrime;
+export default runBrainPrime;
