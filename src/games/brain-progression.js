@@ -3,11 +3,11 @@ import getRandomNumber from '../utils.js';
 
 const description = 'What number is missing in the progression?.';
 
-const getQuestion = (startNumber, step, indexOfHiddenNum) => {
+const getQuestion = (startNumber, step, indexToHide) => {
   const progression = [];
   for (let i = 0; i <= 9; i += 1) {
     let item = startNumber + step * i;
-    if (i === indexOfHiddenNum) {
+    if (i === indexToHide) {
       item = '..';
     }
     progression.push(item);
@@ -18,16 +18,16 @@ const getQuestion = (startNumber, step, indexOfHiddenNum) => {
 
 const getRound = () => {
   const startNumber = getRandomNumber(1, 15);
-  const stepOfProgression = getRandomNumber(1, 5);
-  const indexOfHiddenNumber = getRandomNumber(0, 10);
+  const step = getRandomNumber(1, 5);
+  const indexToHide = getRandomNumber(0, 10);
 
   const question = getQuestion(
     startNumber,
-    stepOfProgression,
-    indexOfHiddenNumber,
+    step,
+    indexToHide,
   );
 
-  const answer = (startNumber + indexOfHiddenNumber * stepOfProgression).toString();
+  const answer = (startNumber + indexToHide * step).toString();
 
   return [question, answer];
 };
