@@ -1,11 +1,11 @@
-import brainGames from '../index.js';
+import gameEngine from '../index.js';
 import getRandomNumber from '../utils.js';
 
 const description = 'What number is missing in the progression?.';
 
-const getProgression = (startNumber, step, indexOfHiddenNum) => {
-  const progression = [startNumber];
-  for (let i = 1; i < 10; i += 1) {
+const getProgressionGameData = (startNumber, step, indexOfHiddenNum) => {
+  const progression = [];
+  for (let i = 0; i <= 9; i += 1) {
     let item = startNumber + step * i;
     if (i === indexOfHiddenNum) {
       item = '..';
@@ -18,16 +18,16 @@ const getProgression = (startNumber, step, indexOfHiddenNum) => {
 
 
 const getRound = () => {
-  const [question, answer] = getProgression(
+  const [question, answer] = getProgressionGameData(
     getRandomNumber(1, 15),
     getRandomNumber(1, 5),
-    getRandomNumber(1, 8),
+    getRandomNumber(0, 10),
   );
 
   return [question.join(' '), answer.toString()];
 };
 
 
-const runProgresion = () => brainGames(description, getRound);
+const runProgresion = () => gameEngine(description, getRound);
 
 export default runProgresion;
