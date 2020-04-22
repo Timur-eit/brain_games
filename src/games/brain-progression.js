@@ -19,15 +19,15 @@ const getQuestion = (startNumber, step, indexToHide) => {
 const getRound = () => {
   const startNumber = getRandomNumber(1, 15);
   const step = getRandomNumber(1, 5);
-  const indexToHide = getRandomNumber(0, 10);
+  const hiddenIndex = getRandomNumber(0, 10);
 
   const question = getQuestion(
     startNumber,
     step,
-    indexToHide,
+    hiddenIndex,
   );
 
-  const answer = (startNumber + indexToHide * step).toString();
+  const answer = (startNumber + hiddenIndex * step).toString();
 
   return [question, answer];
 };
