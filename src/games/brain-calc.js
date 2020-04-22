@@ -1,4 +1,4 @@
-import brainGames from '../index.js';
+import gameEngine from '../index.js';
 import getRandomNumber from '../utils.js';
 
 const description = 'What is the result of expression?';
@@ -11,7 +11,7 @@ const calculate = (firstNumber, secondNumber, operator) => {
       return firstNumber - secondNumber;
     case '*':
       return firstNumber * secondNumber;
-    default: return null;
+    default: throw new Error(`Unknown operator: ${operator}`);
   }
 };
 
@@ -25,6 +25,6 @@ const getRound = () => {
   return [question, answer];
 };
 
-const runCalc = () => brainGames(description, getRound);
+const runCalc = () => gameEngine(description, getRound);
 
 export default runCalc;
