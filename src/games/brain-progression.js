@@ -12,19 +12,24 @@ const getProgressionGameData = (startNumber, step, indexOfHiddenNum) => {
     }
     progression.push(item);
   }
-  const hiddenNumber = startNumber + indexOfHiddenNum * step;
-  return [progression, hiddenNumber];
+  return progression.join(' ');
 };
 
 
 const getRound = () => {
-  const [question, answer] = getProgressionGameData(
-    getRandomNumber(1, 15),
-    getRandomNumber(1, 5),
-    getRandomNumber(0, 10),
+  const startNumber = getRandomNumber(1, 15);
+  const stepOfProgression = getRandomNumber(1, 5);
+  const indexOfHiddenNumber = getRandomNumber(0, 10);
+
+  const question = getProgressionGameData(
+    startNumber,
+    stepOfProgression,
+    indexOfHiddenNumber,
   );
 
-  return [question.join(' '), answer.toString()];
+  const answer = (startNumber + indexOfHiddenNumber * stepOfProgression).toString();
+
+  return [question, answer];
 };
 
 
