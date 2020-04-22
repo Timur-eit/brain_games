@@ -16,10 +16,10 @@ const calculate = (firstNumber, secondNumber, operator) => {
 };
 
 const getRound = () => {
-  const collOfOperators = ['+', '-', '*'];
+  const operators = ['+', '-', '*'];
   const firstNumber = getRandomNumber(1, 10);
   const secondNumber = getRandomNumber(1, 10);
-  const operator = collOfOperators[getRandomNumber(0, collOfOperators.length)];
+  const operator = operators[getRandomNumber(0, operators.length)];
   const question = `${firstNumber} ${operator} ${secondNumber}`;
   const answer = calculate(firstNumber, secondNumber, operator).toString();
   return [question, answer];
