@@ -7,8 +7,7 @@ const progressionLength = 10;
 
 const getQuestion = (startNumber, step, hiddenIndex) => {
   const progression = [];
-  const maxProgressionIndex = progressionLength - 1;
-  for (let progressionIndex = 0; progressionIndex <= maxProgressionIndex; progressionIndex += 1) {
+  for (let progressionIndex = 0; progressionIndex < progressionLength; progressionIndex += 1) {
     let item = startNumber + step * progressionIndex;
     if (progressionIndex === hiddenIndex) {
       item = '..';
