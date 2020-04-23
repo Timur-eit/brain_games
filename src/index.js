@@ -6,7 +6,7 @@ const gameEngine = (description, round) => {
   console.log(`Hello, ${username}!`);
   console.log(description);
 
-  for (let i = 1; i <= 3; i += 1) {
+  for (let gameStage = 1; gameStage <= 3; gameStage += 1) {
     const [question, correctAnswer] = round();
     console.log(`Question: ${question}`);
     const answer = readlineSync.question('Your answer: ');
